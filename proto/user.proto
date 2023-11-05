@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "./proto";
+
+package user;
+
+message UserId {
+  int32 id = 1;
+};
+
+message Empty {};
+
+message User {
+  int32 id = 1;
+  string fname = 2;
+  string city = 3;
+  string phone = 4;
+  float height = 5;
+  bool married = 6;
+}
+
+service UserService {
+  rpc GetUserById(UserId) returns (User);
+  rpc GetAllUsers(Empty) returns (stream User);
+}
